@@ -15,18 +15,26 @@ public class ConnectionThread extends Thread{
         this.socket = socket;
     }
     public void run() {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
-            ServeurSender serveurSender = new ServeurSender(printWriter);
-            ServeurListener serveurListener = new ServeurListener(bufferedReader);
-            Random random = new Random();
-            String result = serveurListener.get_task();
-            int port = random.nextInt(12000 - 11000) + 11000;
-            serveurSender.send_task(port);
-            System.out.println("Serveur recoit :" + result);
-        }catch (IOException e) {
-            e.printStackTrace();
+        while (true){
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
+                ServeurSender serveurSender = new ServeurSender(printWriter);
+                ServeurListener serveurListener = new ServeurListener(bufferedReader);
+                Random random = new Random();
+                String result = serveurListener.get_task();
+                int port = random.nextInt(12000 - 11000) + 11000;
+                serveurSender.send_task(port);
+                System.out.println("Serveur recoit :" + result);
+                bufferedReader.close();
+                printWriter.close();
+                this.socket.close();
+            }catch (IOException e) {
+                e.printStackTrace();
             }
+            return;
+        }
+
     }
+
 }

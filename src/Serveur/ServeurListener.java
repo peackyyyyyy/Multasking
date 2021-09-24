@@ -10,7 +10,7 @@ public class ServeurListener {
         this.bufferedReader = bufferedReader;
     }
 
-    public void get_task() throws IOException {
-        this.bufferedReader.readLine();
+    public String get_task() throws IOException {
+        return this.bufferedReader.readLine();
     }
 }

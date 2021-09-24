@@ -11,14 +11,14 @@ import java.net.SocketException;
 public class MainClient {
     public static void main(String[] args) throws IOException {
         try {
-            ServerSocket sockettest = new ServerSocket(0);
-            sockettest.setReuseAddress(true);
-            int port =  sockettest.getLocalPort();
-            Socket socket = new Socket("localhost", port);
+            Socket socket = new Socket("localhost", 12333);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             ClientSender clientSender = new ClientSender(printWriter);
             ClientListener clientListener = new ClientListener(bufferedReader);
+            clientSender.send_task("Client : Hello ca va ?");
+            String result = clientListener.get_result();
+            System.out.println("Client recoit :" + result);
             socket.close();
             bufferedReader.close();
             printWriter.close();

@@ -1,7 +1,9 @@
 package Main;
 
+import Serveur.Serveur;
 import Serveur.ServeurListener;
 import Serveur.ServeurSender;
+import dispatcher.Dispatcher;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -10,29 +12,20 @@ import java.util.Random;
 
 public class ConnectionThread extends Thread{
     private final Socket socket;
+    private Dispatcher dispatcher;
 
-    public ConnectionThread(Socket socket) {
+    public ConnectionThread(Socket socket, Dispatcher dispatcher) {
         this.socket = socket;
+        this.dispatcher = dispatcher;
     }
     public void run() {
-        while (true){
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
-                ServeurSender serveurSender = new ServeurSender(printWriter);
-                ServeurListener serveurListener = new ServeurListener(bufferedReader);
-                Random random = new Random();
-                String result = serveurListener.get_task();
-                int port = random.nextInt(12000 - 11000) + 11000;
-                serveurSender.send_task(port);
-                System.out.println("Serveur recoit :" + result);
-                bufferedReader.close();
-                printWriter.close();
-                this.socket.close();
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-            return;
+        try {
+            Random random = new Random();
+            int port = random.nextInt(12000 - 11000) + 11000;
+            System.out.println("Nouveau serveur en " + port);
+            new Serveur(port,dispatcher).run();
+        }catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

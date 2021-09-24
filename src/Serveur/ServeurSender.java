@@ -10,7 +10,7 @@ public class ServeurSender {
         this.printWriter = printWriter;
     }
 
-    public void send_task(String message){
-        this.printWriter.println(message);
+    public void send_task(int port){
+        this.printWriter.println(port);
     }
 }

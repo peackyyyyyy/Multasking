@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.Random;
 
 public class MainServeur {
     public static void main(String[] args) {
@@ -20,7 +21,9 @@ public class MainServeur {
             ServeurSender serveurSender = new ServeurSender(printWriter);
             ServeurListener serveurListener = new ServeurListener(bufferedReader);
             String result = serveurListener.get_task();
-            serveurSender.send_task("Serveur : ca va merci");
+            Random random = new Random();
+            int port = random.nextInt(12000 - 11000) + 11000;
+            serveurSender.send_task(port);
             System.out.println("Serveur recoit :" + result);
             socket.close();
             bufferedReader.close();

@@ -26,17 +26,13 @@ public class ConnectionThread extends Thread{
             int port = random.nextInt(12000 - 11000) + 11000;
 
             System.out.println("Nouveau serveur en " + port);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            new Serveur(port,dispatcher).start();
             out = new PrintWriter(socket.getOutputStream(), true);
-            String str =in.readLine();
-            System.out.println(str);
             out.println(port);
-            new Serveur(port,dispatcher).run();
-
+            System.out.println("Socket " + port + " fermée");
         }catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }

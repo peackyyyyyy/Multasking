@@ -1,7 +1,7 @@
 package Serveur;
 
-import sample.ServeurListener;
-import sample.ServeurSender;
+import ServeurListener;
+import ServeurSender;
 
 import java.io.*;
 import java.net.Socket;

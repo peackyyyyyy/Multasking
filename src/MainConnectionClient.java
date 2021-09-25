@@ -1,13 +1,8 @@
-package sample;
-
-import Client.Client;
 import Client.ClientListener;
 import Client.ClientSender;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 import java.util.Objects;
 
 public class MainConnectionClient {

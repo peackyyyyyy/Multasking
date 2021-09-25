@@ -1,3 +1,5 @@
+package Workflow;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -33,7 +35,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
+        return "Workflow.Message{" +
                 "message='" + message + '\'' +
                 ", expediteur='" + expediteur + '\'' +
                 ", receveur=" + receveur +

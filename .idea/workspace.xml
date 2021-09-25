@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2af318c2-f173-49c3-b4a9-d1b0527bfc6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+    <list default="true" id="1e48e099-ee42-412b-9bb7-b12e54336e90" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/ConnectionThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/ConnectionThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/MainConnectionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MainConnectionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main/MainConnectionServeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/MainConnectionServeur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,30 +17,67 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1yaaQ0MEmQ5O0nbdMjzkfu7cW3b" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1ydH9D0WFgjyGlJFOvgGqLzwxbZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunManager" selected="Application.MainConnectionClient">
+    <configuration name="MainConnectionClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.MainConnectionClient" />
+      <module name="Multasking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainConnectionServeur" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.MainConnectionServeur" />
+      <module name="Multasking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainConnectionClient" />
+        <item itemvalue="Application.MainConnectionServeur" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2af318c2-f173-49c3-b4a9-d1b0527bfc6e" name="Default Changelist" comment="" />
-      <created>1632492134800</created>
+      <changelist id="1e48e099-ee42-412b-9bb7-b12e54336e90" name="Default Changelist" comment="" />
+      <created>1632574390574</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1632492134800</updated>
+      <updated>1632574390574</updated>
     </task>
     <servers />
   </component>
@@ -51,9 +91,16 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main/ConnectionThread.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

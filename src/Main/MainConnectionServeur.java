@@ -19,8 +19,10 @@ public class MainConnectionServeur {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if(socket != null)
+            if(socket != null){
                 new ConnectionThread(socket,dispatcher).start();
+                System.out.println("socket crée");
+            }
 
         }
     }

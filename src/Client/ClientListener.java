@@ -12,7 +12,7 @@ public class ClientListener {
         this.bufferedReader = bufferedReader;
     }
 
-    public String get_result() throws IOException {
+    public String get_result() throws IOException, InterruptedException {
         return this.bufferedReader.readLine();
     }
 }

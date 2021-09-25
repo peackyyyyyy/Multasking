@@ -1,4 +1,4 @@
-package Serveur;
+package sample;
 
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -11,10 +11,13 @@ public class ServeurSender {
         this.printWriter = printWriter;
     }
 
-    public void send_task(int port){
+    public void send_port(int port){
         this.printWriter.println(port);
     }
     public void send_message(String message){
         this.printWriter.println(message);
+    }
+    public void close(){
+        printWriter.close();
     }
 }

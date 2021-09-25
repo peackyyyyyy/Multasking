@@ -1,5 +1,6 @@
 package Main;
 
+import Client.Client;
 import Client.ClientListener;
 import Client.ClientSender;
 
@@ -22,6 +23,10 @@ public class MainConnectionClient {
             socket.close();
             bufferedReader.close();
             printWriter.close();
+            Socket socket_client = new Socket("localhost", Integer.parseInt(result));
+            new ClientThread(new Client(new ClientSender(new PrintWriter(new OutputStreamWriter(socket_client.getOutputStream()),
+                    true)),new ClientListener(new BufferedReader(new InputStreamReader(socket_client.getInputStream())))))
+                    .start();
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (IOException e) {

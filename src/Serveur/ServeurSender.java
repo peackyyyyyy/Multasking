@@ -2,6 +2,7 @@ package Serveur;
 
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServeurSender {
     private final PrintWriter printWriter;
@@ -12,5 +13,8 @@ public class ServeurSender {
 
     public void send_task(int port){
         this.printWriter.println(port);
+    }
+    public void send_message(String message){
+        this.printWriter.println(message);
     }
 }

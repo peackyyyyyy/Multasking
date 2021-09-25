@@ -1,3 +1,7 @@
+package Main;
+
+import Dispatcher.Dispatcher;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;

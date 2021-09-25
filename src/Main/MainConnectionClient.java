@@ -1,5 +1,8 @@
+package Main;
+
 import Client.ClientListener;
 import Client.ClientSender;
+import Client.ConnectionServeur;
 
 import java.io.*;
 import java.net.Socket;

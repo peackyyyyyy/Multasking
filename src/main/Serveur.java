@@ -1,6 +1,6 @@
-package Main;
+package main;
 
-import Dispatcher.Dispatcher;
+import dispatcher.Dispatcher;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -13,10 +13,13 @@ public class Serveur {
     private static ArrayList<Dispatcher> dispatchers = new ArrayList<>();
     private static ExecutorService parralelisme = Executors.newFixedThreadPool(4);
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(9090);
+        ServerSocket serverSocket = new ServerSocket(4444);
+        Integer cpt = 0;
         while (true) {
             Socket socket = serverSocket.accept();
-            Dispatcher dispatcher = new Dispatcher(socket, dispatchers);
+            cpt +=1;
+            System.out.println("new connection : "+cpt);
+            Dispatcher dispatcher = new Dispatcher(socket, dispatchers, cpt);
             dispatchers.add(dispatcher);
             parralelisme.execute(dispatcher);
         }

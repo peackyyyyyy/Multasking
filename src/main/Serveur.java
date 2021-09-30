@@ -14,12 +14,10 @@ public class Serveur {
     private static ExecutorService parralelisme = Executors.newFixedThreadPool(4);
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(4444);
-        Integer cpt = 0;
         while (true) {
             Socket socket = serverSocket.accept();
-            cpt +=1;
-            System.out.println("new connection : "+cpt);
-            Dispatcher dispatcher = new Dispatcher(socket, dispatchers, cpt);
+            System.out.println("new connection");
+            Dispatcher dispatcher = new Dispatcher(socket, dispatchers);
             dispatchers.add(dispatcher);
             parralelisme.execute(dispatcher);
         }

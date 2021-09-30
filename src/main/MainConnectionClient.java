@@ -1,4 +1,5 @@
 package main;
+import Workflow.FirstConnection;
 import Workflow.MessageClient;
 import client.ConnectionServeur;
 import serveur.ClientSender;
@@ -27,17 +28,27 @@ public class MainConnectionClient {
 
 
         while (true) {
-            ArrayList<Integer> destinataires = new ArrayList<>();
-            while (true) {
-                System.out.println("destinataire >");
-                String destinataire = clavier.readLine();
-                if (Objects.equals(destinataire, "next"))break;
-                destinataires.add(Integer.valueOf(destinataire));
+            ArrayList<String> destinataires = new ArrayList<>();
+            String task = clavier.readLine();
+            if (Objects.equals(task, "send")){
+                while (true) {
+                    System.out.println("destinataire >");
+                    String destinataire = clavier.readLine();
+                    if (Objects.equals(destinataire, "next"))break;
+                    destinataires.add(destinataire);
+                }
+                System.out.println("message >");
+                String message = clavier.readLine();
+                if (Objects.equals(message, "exit"))break;
+                clientSender.send_message_client(new MessageClient(message, "toto", destinataires, new Date()));
             }
-            System.out.println("message >");
-            String message = clavier.readLine();
-            if (Objects.equals(message, "exit"))break;
-            clientSender.send_message_client(new MessageClient(message, "toto", destinataires, new Date()));
+            else if (Objects.equals(task, "connexion")){
+                System.out.println("name >");
+                String name = clavier.readLine();
+                clientSender.send_connexion(new FirstConnection(name));
+            }
+
         }
+
     }
 }

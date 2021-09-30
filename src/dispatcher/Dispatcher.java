@@ -59,6 +59,14 @@ public class Dispatcher extends Thread{
             e.printStackTrace();
         } finally {
             try {
+                if (this.name != null){
+                    for (Dispatcher client: clients) {
+                        if(!Objects.equals(this.name, client.name) && !Objects.equals(client.name, null)) {
+                            client.clientSender.send_message_serveur(new MessageServeur(name + " is disconnected", "Serveur", new Date()));
+                        }
+                    }
+                    clients.remove(this);
+                }
                 clientSender.close();
                 clientListener.close();
             } catch (IOException e) {

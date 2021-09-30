@@ -28,6 +28,7 @@ public class MainConnectionClient {
 
 
         while (true) {
+            String name = null;
             ArrayList<String> destinataires = new ArrayList<>();
             String task = clavier.readLine();
             if (Objects.equals(task, "send")){
@@ -39,16 +40,20 @@ public class MainConnectionClient {
                 }
                 System.out.println("message >");
                 String message = clavier.readLine();
-                if (Objects.equals(message, "exit"))break;
-                clientSender.send_message_client(new MessageClient(message, "toto", destinataires, new Date()));
+                if (Objects.equals(message, "exit"))
+                    break;
+                clientSender.send_message_client(new MessageClient(message, name, destinataires, new Date()));
             }
             else if (Objects.equals(task, "connexion")){
                 System.out.println("name >");
-                String name = clavier.readLine();
+                name = clavier.readLine();
                 clientSender.send_connexion(new FirstConnection(name));
             }
 
         }
 
+        clavier.close();
+        clientSender.close();
+        socket.close();
     }
 }

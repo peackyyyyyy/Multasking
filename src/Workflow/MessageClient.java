@@ -11,17 +11,17 @@ public class MessageClient implements Serializable {
 
     private final String message;
     private final String expediteur;
-    private final ArrayList<Integer> receveur;
+    private final ArrayList<String> receveur;
     private final Date date;
 
-    public MessageClient(String message, String expediteur, ArrayList<Integer> receveur, Date date){
+    public MessageClient(String message, String expediteur, ArrayList<String> receveur, Date date){
         this.message = message;
         this.expediteur = expediteur;
         this.receveur = receveur;
         this.date = date;
     }
 
-    public ArrayList<Integer> getReceveur() {
+    public ArrayList<String> getReceveur() {
         return receveur;
     }
 

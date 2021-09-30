@@ -17,8 +17,8 @@ public class ClientListener {
     public MessageServeur get_message() throws IOException, ClassNotFoundException {
         return (MessageServeur) this.objectInputStream.readObject();
     }
-    public MessageClient get_task() throws IOException, ClassNotFoundException {
-        return (MessageClient) this.objectInputStream.readObject();
+    public Object get_task() throws IOException, ClassNotFoundException {
+        return this.objectInputStream.readObject();
     }
     public FirstConnection get_first_connexion() throws IOException, ClassNotFoundException {
         return (FirstConnection) this.objectInputStream.readObject();

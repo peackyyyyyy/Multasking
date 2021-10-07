@@ -1,7 +1,5 @@
 package main;
 
-import dispatcher.Dispatcher;
-
 import javax.net.ssl.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +10,7 @@ import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import dispatcher.Dispatcher;
 
 public class ServeurSSL {
     private static ArrayList<Dispatcher> dispatchers = new ArrayList<>();

@@ -1,22 +1,55 @@
 package main;
 
 import Workflow.FirstConnection;
-import Workflow.MessageClient;
 import client.ConnectionServeur;
 import serveur.ClientSender;
 
 import javax.net.ssl.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
-import java.net.Socket;
 import java.security.*;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
 
-public class ConnectionClientSSL {
-    /*public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+public class Connexion {
+    public JPanel panel1;
+    private JTextField pseudoText;
+    private JButton connexionButton;
+    private String pseudo;
+    private boolean check = false;
+    JFrame messagerie;
+    Messagerie msg;
+    ClientSender clientSender;
+
+    public Connexion(JFrame jFrame) throws IOException {
+
+        connexionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!pseudoText.getText().equals("")) {
+                    pseudo = pseudoText.getText();
+                    messagerie.setVisible(true);
+                    msg.pseudo = pseudo;
+                    try {
+                        clientSender.send_connexion(new FirstConnection(pseudo));
+                        System.out.println("pseudo send");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    jFrame.dispose();
+                }
+            }
+        });
+
+        messagerie = new JFrame("Messagerie");
+        msg = new Messagerie();
+        messagerie.setContentPane(msg.panel1);
+        messagerie.setVisible(false);
+        messagerie.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        messagerie.setSize(1000,1000);
+
         SSLSocket sslSocket = null;
         ConnectionServeur connectionServeur = null;
         try {
@@ -61,57 +94,20 @@ public class ConnectionClientSSL {
             SSLSocketFactory socketFactory = sslContext.getSocketFactory();
             sslSocket = (SSLSocket) socketFactory.createSocket("localhost", 4444);
             sslSocket.setEnabledProtocols(new String[]{"TLSv1.2"});
-            connectionServeur = new ConnectionServeur(sslSocket);
+            connectionServeur = new ConnectionServeur(sslSocket,msg.lstmsg);
         } catch (IOException | KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException | CertificateException | NoSuchProviderException | KeyManagementException e) {
             e.printStackTrace();
         }
         assert sslSocket != null;
         BufferedReader clavier = new BufferedReader(new InputStreamReader(System.in));
-        ClientSender clientSender = new ClientSender(new ObjectOutputStream(sslSocket.getOutputStream()));
+        clientSender = new ClientSender(new ObjectOutputStream(sslSocket.getOutputStream()));
 
-        JFrame connexion = new JFrame("Connexion");
-        Connexion co = new Connexion();
-        connexion.setVisible(true);
-        connexion.setContentPane(co.panel1);
-        connexion.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        while(!co.isCheck()){}
-        System.out.println(co.getPseudo());
-        /*String pseudo = co.getPseudo();
-        connexion.dispose();
-        JFrame messagerie = new JFrame("Messagerie");
-        Messagerie msg = new Messagerie();
-        messagerie.setVisible(true);
-        messagerie.setContentPane(msg.panel1);
         new Thread(connectionServeur).start();
 
-        String name = null;
-        while (true) {
-            ArrayList<String> destinataires = new ArrayList<>();
-            String task = clavier.readLine();
-            if (Objects.equals(task, "send")){
-                while (true) {
-                    System.out.println("destinataire >");
-                    String destinataire = clavier.readLine();
-                    if (Objects.equals(destinataire, "next"))break;
-                    destinataires.add(destinataire);
-                }
-                System.out.println("message >");
-                String message = clavier.readLine();
-                if (Objects.equals(message, "exit"))
-                    break;
-                clientSender.send_message_client(new MessageClient(message, name, destinataires, new Date()));
-            }
-            else if (Objects.equals(task, "connexion")){
-                System.out.println("name >");
-                name = clavier.readLine();
-                clientSender.send_connexion(new FirstConnection(name));
-            }
+        msg.clientSender = clientSender;
 
-        }
 
-        clavier.close();
-        clientSender.close();
-        sslSocket.close();
-    }*/
+
+
+    }
 }

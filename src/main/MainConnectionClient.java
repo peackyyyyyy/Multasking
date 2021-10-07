@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Objects;
 
 public class MainConnectionClient {
-    public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+    /*public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Socket socket = null;
         ConnectionServeur connectionServeur = null;
         try {
@@ -55,5 +55,5 @@ public class MainConnectionClient {
         clavier.close();
         clientSender.close();
         socket.close();
-    }
+    }*/
 }

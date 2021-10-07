@@ -70,9 +70,8 @@ public class ConnectionClientSSL {
 
         new Thread(connectionServeur).start();
 
-
+        String name = null;
         while (true) {
-            String name = null;
             ArrayList<String> destinataires = new ArrayList<>();
             String task = clavier.readLine();
             if (Objects.equals(task, "send")){

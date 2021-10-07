@@ -17,6 +17,8 @@ public class Messagerie {
     private JTextField msgaenvoyer;
     private JButton envoyerButton;
     private JTextField destinataire;
+    public JPanel listeuser;
+    private JCheckBox checkBox1;
     public ClientSender clientSender;
     public String pseudo;
 

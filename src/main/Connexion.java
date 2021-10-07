@@ -17,6 +17,7 @@ public class Connexion {
     public JPanel panel1;
     private JTextField pseudoText;
     private JButton connexionButton;
+    private JPanel listeuser;
     private String pseudo;
     private boolean check = false;
     JFrame messagerie;

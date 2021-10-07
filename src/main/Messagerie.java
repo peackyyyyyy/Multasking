@@ -35,6 +35,11 @@ public class Messagerie {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+                finally {
+                    msgaenvoyer.setText("");
+                    destinataire.setText("");
+                    envoyerButton.setSelected(false);
+                }
             }
         });
     }

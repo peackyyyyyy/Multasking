@@ -48,6 +48,7 @@ public class Connexion {
         messagerie.setContentPane(msg.panel1);
         messagerie.setVisible(false);
         messagerie.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        messagerie.setSize(1000,1000);
 
         SSLSocket sslSocket = null;
         ConnectionServeur connectionServeur = null;

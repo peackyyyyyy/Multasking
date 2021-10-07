@@ -24,7 +24,8 @@ public class ConnectionServeur extends Thread{
             while (true) {
                 MessageServeur reponse = clientListener.get_message();
                 if (reponse == null)break;
-                jTextPane.setText(jTextPane.getText() + "\n"+ reponse);
+                String msg = reponse.getDate() + " : " + reponse.getExpediteur() + " > " + reponse.getMessage();
+                jTextPane.setText(jTextPane.getText() + "\n"+ msg);
             }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();

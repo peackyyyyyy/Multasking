@@ -11,6 +11,8 @@ public class MainClient {
         Connexion co = new Connexion(jco);
         jco.setContentPane(co.panel1);
         jco.setVisible(true);
+        jco.setSize(600,400);
         jco.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
     }
 }

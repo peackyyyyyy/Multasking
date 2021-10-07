@@ -23,7 +23,8 @@ public class Connexion {
     Messagerie msg;
     ClientSender clientSender;
 
-    public Connexion() throws IOException {
+    public Connexion(JFrame jFrame) throws IOException {
+
         connexionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,6 +38,7 @@ public class Connexion {
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
+                    jFrame.dispose();
                 }
             }
         });

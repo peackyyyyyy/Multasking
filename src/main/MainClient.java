@@ -8,7 +8,7 @@ public class MainClient {
     public static void main(String[] args) throws IOException {
 
         JFrame jco = new JFrame();
-        Connexion co = new Connexion();
+        Connexion co = new Connexion(jco);
         jco.setContentPane(co.panel1);
         jco.setVisible(true);
         jco.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

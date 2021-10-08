@@ -22,7 +22,7 @@ public class ConnectionServeur extends Thread{
         this.jTextPane = jTextPane;
         this.listeuser=listeuser;
         this.listcheck=listcheck;
-        listeuser.setLayout(new GridLayout(1,10));
+        listeuser.setLayout(new BoxLayout(listeuser, BoxLayout.Y_AXIS));
         ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
         this.clientListener = new ClientListener(objectInputStream);
     }

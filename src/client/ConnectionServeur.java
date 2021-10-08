@@ -4,20 +4,25 @@ import Workflow.MessageServeur;
 import serveur.ClientListener;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ConnectionServeur extends Thread{
     private final Socket socket;
     private final ClientListener clientListener;
     private JTextPane jTextPane;
-    private ArrayList<JCheckBox> listcheck;
+    private HashMap<String,JCheckBox> listcheck;
     public JPanel listeuser;
 
-    public ConnectionServeur(Socket socket, JTextPane jTextPane) throws IOException {
+    public ConnectionServeur(Socket socket, JTextPane jTextPane, JPanel listeuser,HashMap<String,JCheckBox> listcheck) throws IOException {
         this.socket = socket;
         this.jTextPane = jTextPane;
+        this.listeuser=listeuser;
+        this.listcheck=listcheck;
+        listeuser.setLayout(new GridLayout(1,10));
         ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
         this.clientListener = new ClientListener(objectInputStream);
     }
@@ -31,16 +36,16 @@ public class ConnectionServeur extends Thread{
                     String[] status = stat.split(" ");
                     System.out.println(status[2]);
                     if(status[2].equals("connected")){
-                        System.out.println(status[0]);
-                        JCheckBox checkbox = new JCheckBox(status[2]);
-                        //listeuser.add(checkbox);
+                        JCheckBox checkbox = new JCheckBox(status[0]);
+                        listeuser.add(checkbox);
                         checkbox.setSelected(true);
-                        //listcheck.add(checkbox);
+                        listcheck.put(status[0],checkbox);
                     }
                     else{
                         System.out.println(status[0] + "disconnect");
-                        //
-                        //checkbox delete
+                        JCheckBox check= listcheck.get(status[0]);
+                        listeuser.remove(check);
+                        listcheck.remove(status[0]);
                     }
 
                 }

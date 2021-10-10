@@ -45,6 +45,7 @@ public class ConnectionServeur extends Thread{
                         System.out.println(status[0] + "disconnect");
                         JCheckBox check= listcheck.get(status[0]);
                         listeuser.remove(check);
+                        listeuser.updateUI();
                         listcheck.remove(status[0]);
                     }
 

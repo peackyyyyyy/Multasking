@@ -7,37 +7,38 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 public class Messagerie {
     public JTextPane lstmsg;
     public JPanel panel1;
     private JTextField msgaenvoyer;
     private JButton envoyerButton;
-    private JTextField destinataire;
+    public JPanel listeuser;
     public ClientSender clientSender;
     public String pseudo;
+    private HashMap<String,JCheckBox> map;
 
-    public Messagerie() {
+    public Messagerie(HashMap<String, JCheckBox> map) {
+        this.map=map;
         envoyerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String dest = destinataire.getText();
-                String lstdest[] = dest.split(";");
-                ArrayList<String> arraydest =new ArrayList<>();
-                for(int i = 0; i < lstdest.length; i++){
-                    arraydest.add(lstdest[i]);
+                //arraylist
+                ArrayList<String> arraydest = new ArrayList<>();
+                for (Map.Entry<String,JCheckBox> check:map.entrySet()) {
+                    if(check.getValue().isSelected())
+                        arraydest.add(check.getKey());
                 }
                 try {
                     clientSender.send_message_client(new MessageClient(msgaenvoyer.getText(),pseudo,arraydest,new Date()));
+                    String msg = "\n" + new Date() + " : " + pseudo + " > " + msgaenvoyer.getText() +"\n";
+                    lstmsg.setText(lstmsg.getText() + msg);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
                 finally {
                     msgaenvoyer.setText("");
-                    destinataire.setText("");
                     envoyerButton.setSelected(false);
                 }
             }

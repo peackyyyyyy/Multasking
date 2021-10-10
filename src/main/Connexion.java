@@ -12,11 +12,13 @@ import java.io.*;
 import java.security.*;
 import java.security.cert.CertificateException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Connexion {
     public JPanel panel1;
     private JTextField pseudoText;
     private JButton connexionButton;
+    private JPanel listeuser;
     private String pseudo;
     private boolean check = false;
     JFrame messagerie;
@@ -44,7 +46,9 @@ public class Connexion {
         });
 
         messagerie = new JFrame("Messagerie");
-        msg = new Messagerie();
+        HashMap<String,JCheckBox> map=new HashMap<>();
+        msg = new Messagerie(map);
+        listeuser= msg.listeuser;
         messagerie.setContentPane(msg.panel1);
         messagerie.setVisible(false);
         messagerie.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -94,7 +98,7 @@ public class Connexion {
             SSLSocketFactory socketFactory = sslContext.getSocketFactory();
             sslSocket = (SSLSocket) socketFactory.createSocket("localhost", 4444);
             sslSocket.setEnabledProtocols(new String[]{"TLSv1.2"});
-            connectionServeur = new ConnectionServeur(sslSocket,msg.lstmsg);
+            connectionServeur = new ConnectionServeur(sslSocket,msg.lstmsg, listeuser, map);
         } catch (IOException | KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException | CertificateException | NoSuchProviderException | KeyManagementException e) {
             e.printStackTrace();
         }

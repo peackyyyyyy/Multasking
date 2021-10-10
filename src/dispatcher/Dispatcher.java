@@ -46,8 +46,9 @@ public class Dispatcher extends Thread{
                 }
                 if (firstConnection != null){
                     this.name = firstConnection.getName();
+                    this.clientSender.send_message_serveur(new MessageServeur("You are connected", "Serveur", new Date()));
                     for (Dispatcher client: clients){
-                        if(!Objects.equals(client.name, null)){
+                        if(!Objects.equals(client.name, null) && !Objects.equals(this.name, client.name)){
                             this.clientSender.send_message_serveur(new MessageServeur(client.name+" is connected", "Serveur", new Date()));
                         }
                         if(!Objects.equals(this.name, client.name) && !Objects.equals(client.name, null))

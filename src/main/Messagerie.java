@@ -32,12 +32,13 @@ public class Messagerie {
                 }
                 try {
                     clientSender.send_message_client(new MessageClient(msgaenvoyer.getText(),pseudo,arraydest,new Date()));
+                    String msg = "\n" + new Date() + " : " + pseudo + " > " + msgaenvoyer.getText() +"\n";
+                    lstmsg.setText(lstmsg.getText() + msg);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
                 finally {
                     msgaenvoyer.setText("");
-                    destinataire.setText("");
                     envoyerButton.setSelected(false);
                 }
             }
